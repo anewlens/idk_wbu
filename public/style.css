@@ -1,6 +1,10 @@
 * {
     padding: 0;
     margin: 0;
+    font-family: 'Raleway', sans-serif;
+
+    --main: hsl(179, 84%, 40%);
+    --white: #fcf9ec;
 }
 
 html {
@@ -10,12 +14,50 @@ html {
 .container {
     display: flex;
     flex-direction: column;
-    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 100vh;
+    background: var(--main);
+    background-size: cover;
 }
 
 .title {
     font-family: sans-serif;
     font-size: 5rem;
+    color: var(--white);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 5rem;
+}
+
+.filters {
+    display: flex;
+    justify-content: space-around;
+}
+
+button {
+    background-color: var(--white);
+    border: none;
+    border-radius: 1.5rem;
+    margin: 1rem;
+}
+
+.option {
+    font-size: 2rem;
+    background-color: var(--white);
+    color: var(--main);
+    padding: 1rem;
+}
+
+#activate {
+     font-size: 3rem;
+     background-color: rgba(100, 255, 0, 1);
+     display: inline;
 }
 
 .active {
