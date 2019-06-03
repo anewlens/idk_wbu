@@ -16,6 +16,11 @@ app.use(express.json())
 app.listen(port, () => console.log(`Server running on port ${port}`))
 
 app.post('/', (req, res) => {
+  let searchCategories
+  let longitude = req.body.long
+  let latitude = req.body.lat 
+
+
   client.search({
     term: 'restaurants',
     categories: req.body.filters.join(),
@@ -25,6 +30,7 @@ app.post('/', (req, res) => {
     limit: 50
   })
   .then(results => {
+    console.log('Full Results: ', results.jsonBody.businesses.map(item => item.name))
     let max = results.jsonBody.businesses.length
     let random = Math.floor(Math.random() * max + 1)
     console.log(results.jsonBody.businesses[random].name);
@@ -35,5 +41,4 @@ app.post('/', (req, res) => {
   .catch(e => {
     console.log(e);
   })
-}
-)
+})

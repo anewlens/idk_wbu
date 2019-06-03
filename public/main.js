@@ -20,7 +20,7 @@ filters.forEach(btn => {
     })
 })
 
-activateBtn.addEventListener('click', async () => {
+activateBtn.addEventListener('click', () => {
     let data = {
         lat: latitude,
         long: longitude,
@@ -38,7 +38,7 @@ activateBtn.addEventListener('click', async () => {
     .then(res => {
         console.log('pre-res:', res)
         res.json()
-        .then(async result => {
+        .then(result => {
             console.log('result', result)
             resultName = result.random.name
         })
