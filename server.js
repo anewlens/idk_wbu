@@ -3,7 +3,7 @@ const app = express()
 const path = require('path')
 const request = require('request')
 const router = express.Router()
-const port = process.env.port || 3000
+const port = process.env.PORT || 3000
 const yelp = require('yelp-fusion')
 const client = yelp.client('1CGB21Re-F3nO-8EFrdwEpHbD3OdrUT-fr6UIVsOEa_KsBEGMuHNCDpvNgqdHgTuUzQxr21ZjTlKH57UCXuSAEb09eHvxDhVO-N39m-dn-EkpUYfQH93gR3ZEVPfXHYx')
 

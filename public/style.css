@@ -3,8 +3,8 @@
     margin: 0;
     font-family: 'Raleway', sans-serif;
 
-    --main: hsl(179, 84%, 40%);
-    --white: #fcf9ec;
+    --white: hsl(179, 84%, 40%);
+    --main: #fcf9ec;
 }
 
 html {
@@ -20,11 +20,12 @@ html {
     height: 100vh;
     background: var(--main);
     background-size: cover;
+    padding: 0 5vw;
 }
 
 .title {
-    font-family: sans-serif;
     font-size: 5rem;
+    font-weight: 700;
     color: var(--white);
 }
 
@@ -45,21 +46,39 @@ button {
     border: none;
     border-radius: 1.5rem;
     margin: 1rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+button:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 .option {
     font-size: 2rem;
-    background-color: var(--white);
-    color: var(--main);
+    background-color: var(--main);
+    color: var(--white);
+    border: 2px solid var(--white);
     padding: 1rem;
+
 }
 
 #activate {
      font-size: 3rem;
-     background-color: rgba(100, 255, 0, 1);
+     font-weight: 700;
+     background-color: rgba(100, 255, 0, .5);
      display: inline;
+     padding: 1rem;
 }
 
 .active {
-    color: red
+    color: var(--main);
+    background-color: var(--white);
+}
+
+#result {
+    text-align: center;
+    font-size: 4rem;
+    margin-top: 2rem;
+    font-weight: 700;
 }

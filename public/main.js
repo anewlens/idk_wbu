@@ -1,5 +1,6 @@
 const filters = document.querySelectorAll('.option')
 const activateBtn = document.getElementById('activate')
+const answer = document.getElementById('result')
 let chosenFilters = []
 let longitude
 let latitude
@@ -19,7 +20,7 @@ filters.forEach(btn => {
     })
 })
 
-activateBtn.addEventListener('click', () => {
+activateBtn.addEventListener('click', async () => {
     let data = {
         lat: latitude,
         long: longitude,
@@ -37,9 +38,12 @@ activateBtn.addEventListener('click', () => {
     .then(res => {
         console.log('pre-res:', res)
         res.json()
-        .then(result => {
+        .then(async result => {
             console.log('result', result)
             resultName = result.random.name
+        })
+        .then(() => {
+            answer.innerHTML = resultName
         })
     })
     .catch(err => console.log(err))
