@@ -5,7 +5,7 @@ const request = require('request')
 const router = express.Router()
 const port = process.env.PORT || 3000
 const yelp = require('yelp-fusion')
-const client = yelp.client('1CGB21Re-F3nO-8EFrdwEpHbD3OdrUT-fr6UIVsOEa_KsBEGMuHNCDpvNgqdHgTuUzQxr21ZjTlKH57UCXuSAEb09eHvxDhVO-N39m-dn-EkpUYfQH93gR3ZEVPfXHYx')
+const client = yelp.client(process.env.yelpAPI)
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname + '/public/index.html')))
 
