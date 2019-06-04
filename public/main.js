@@ -1,11 +1,16 @@
 const filters = document.querySelectorAll('.option')
 const activateBtn = document.getElementById('activate')
-const answer = document.getElementById('result')
+const answerBlock = document.querySelector('.resultBlock')
+const answerName = document.querySelector('.result');
+const answerSite = document.querySelector('.resultSite')
+const answerLocation = document.querySelector('.resultLocation')
 let chosenFilters = []
 let longitude
 let latitude
 let resultName
-let resultAddress
+let resultLat
+let resultLong
+let resultSite
 
 navigator.geolocation
 .getCurrentPosition(function(position) {
@@ -41,13 +46,16 @@ activateBtn.addEventListener('click', () => {
         .then(result => {
             console.log('result', result)
             resultName = result.random.name
+            resultSite = result.random.url
         })
         .then(() => {
-            answer.innerHTML = resultName
+            answerName.innerHTML = resultName
+            answerSite.setAttribute('href', resultSite)
+            answerLocation.setAttribute('href', `https://www.google.com/maps/search/${resultName.replace(' ','+')}/@${latitude},${longitude},14z`)
         })
     })
     .then(() => {
-        answer.classList.add('reveal')
+        answerBlock.classList.add('reveal')
     })
     .catch(err => console.log(err))
 })
