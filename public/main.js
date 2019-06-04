@@ -46,5 +46,8 @@ activateBtn.addEventListener('click', () => {
             answer.innerHTML = resultName
         })
     })
+    .then(() => {
+        answer.classList.add('reveal')
+    })
     .catch(err => console.log(err))
 })

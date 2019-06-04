@@ -22,17 +22,16 @@ app.post('/', (req, res) => {
 
 
   client.search({
-    term: 'restaurants',
     categories: req.body.filters.join(),
     longitude: req.body.long,
     latitude: req.body.lat,
-    radius: 16100,
+    radius: 8046,
     limit: 50
   })
   .then(results => {
     console.log('Full Results: ', results.jsonBody.businesses.map(item => item.name))
     let max = results.jsonBody.businesses.length
-    let random = Math.floor(Math.random() * max + 1)
+    let random = Math.floor(Math.random() * max)
     console.log(results.jsonBody.businesses[random].name);
     res.send({
       random: results.jsonBody.businesses[random]
