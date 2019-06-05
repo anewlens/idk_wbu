@@ -28,14 +28,13 @@ app.post('/', (req, res) => {
     limit: 50
   })
   .then(results => {
+    //DECLARATIONS FOR RANDOM CHOOSER
+    let max = results.jsonBody.businesses.length
+    let random = Math.floor(Math.random() * max)
 
     //LOGGING RESULTS 
     console.log('Full Results: ', results.jsonBody.businesses.map(item => item.name))
     console.log(results.jsonBody.businesses[random].name);
-
-    //DECLARATIONS FOR RANDOM CHOOSER
-    let max = results.jsonBody.businesses.length
-    let random = Math.floor(Math.random() * max)
 
     //SEND RANDOM BUSINESS
     res.send({

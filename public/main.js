@@ -21,7 +21,7 @@ let resultSite
 
 //GET USER LOCATION
 navigator.geolocation
-.getCurrentPosition(function(position) {
+.getCurrentPosition(position => {
     longitude = position.coords.longitude
     latitude = position.coords.latitude
 })
