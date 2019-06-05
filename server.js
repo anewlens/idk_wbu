@@ -1,26 +1,25 @@
+//EXPRESS BOILERPLATE
 const express = require('express')
 const app = express()
 const path = require('path')
-const request = require('request')
-const router = express.Router()
+
+//DYNAMIC PORT
 const port = process.env.PORT || 3000
+
+//YELP FUSION FOR NODE JS
 const yelp = require('yelp-fusion')
 const client = yelp.client(process.env.yelpAPI)
 
-app.get('/', (req, res) => res.sendFile(path.join(__dirname + '/public/index.html')))
-
+//MIDDLEWARE
 app.use(express.static('public'))
-
 app.use(express.json())
 
-app.listen(port, () => console.log(`Server running on port ${port}`))
+//ROUTES
+app.get('/', (req, res) => res.sendFile(path.join(__dirname + '/public/index.html')))
 
 app.post('/', (req, res) => {
-  let searchCategories
-  let longitude = req.body.long
-  let latitude = req.body.lat 
-
-
+  
+  //YELP API CALL
   client.search({
     categories: req.body.filters.join(),
     longitude: req.body.long,
@@ -29,15 +28,25 @@ app.post('/', (req, res) => {
     limit: 50
   })
   .then(results => {
+
+    //LOGGING RESULTS 
     console.log('Full Results: ', results.jsonBody.businesses.map(item => item.name))
+    console.log(results.jsonBody.businesses[random].name);
+
+    //DECLARATIONS FOR RANDOM CHOOSER
     let max = results.jsonBody.businesses.length
     let random = Math.floor(Math.random() * max)
-    console.log(results.jsonBody.businesses[random].name);
+
+    //SEND RANDOM BUSINESS
     res.send({
       random: results.jsonBody.businesses[random]
     })
+
   })
   .catch(e => {
     console.log(e);
   })
 })
+
+//START SERVER
+app.listen(port, () => console.log(`Server running on port ${port}`))
