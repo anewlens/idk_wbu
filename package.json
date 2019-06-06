@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
+    "push": "concurrently \"git push\" \"git push heroku master\"",
     "server": "nodemon server.js"
   },
   "author": "Robbie Carroll",

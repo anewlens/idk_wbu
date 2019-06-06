@@ -75,6 +75,7 @@ button:active {
 }
 
 #activate {
+    font-family: 'Righteous', cursive;
     font-size: 3.5rem;
     margin-top: 1.5rem;
     padding: 1.5rem 3.5rem;
