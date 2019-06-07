@@ -18,10 +18,11 @@ app.use(express.json())
 app.get('/', (req, res) => res.sendFile(path.join(__dirname + '/public/index.html')))
 
 app.post('/', (req, res) => {
+  console.log(req.body)
   
   //YELP API CALL
   client.search({
-    categories: req.body.filters.join(),
+    categories: req.body.filters.length === 0 ? "restaurants" : req.body.filters.join(),
     longitude: req.body.long,
     latitude: req.body.lat,
     radius: 8046,
