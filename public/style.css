@@ -9,6 +9,7 @@
 
 html {
     font-size: 10px;
+    scroll-behavior: smooth;
 }
 
 .container {
@@ -37,19 +38,18 @@ main {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    padding: 3rem;
     max-width: 50vw;
 }
 
 .filters {
     display: flex;
     flex-wrap: wrap; 
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 button {
     font-family: 'Questrial', sans-serif;
-    border-radius: 1.5rem;
+    border-radius: 1rem;
     padding: 1rem;
     margin: 1rem;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -65,7 +65,7 @@ button:active {
     flex-grow: 1;
     background-color: var(--white);
     color: var(--navy);
-    border: 2px solid var(--navy);
+    border: 1px solid var(--navy);
 
 }
 
@@ -78,10 +78,11 @@ button:active {
     font-family: 'Righteous', cursive;
     font-size: 3.5rem;
     margin-top: 1.5rem;
-    padding: 1.5rem 3.5rem;
-    background-color:#f3a953;
+    padding: 1rem 2.5rem;
+    background-color:rgb(243, 169, 83);
     color: var(--white);
     border: none;
+    box-shadow: 0 1px 3px 0 rgba(243, 169, 83, 0.6), 0 1px 2px 0 rgba(243, 169, 83, 0.36);
 }
 
 .resultBlock {
@@ -157,6 +158,10 @@ a:active {
 
     .title {
         font-size: 6rem;
+    }
+
+    main {
+        max-width: 95vw;
     }
 
     .option {
