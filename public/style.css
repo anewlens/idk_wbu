@@ -81,10 +81,10 @@ button:focus {
 }
 
 .priceFilter {
-    display: flex;
+    display: inline;
     justify-content: space-between;
     color: transparent;
-    transition: 1s ease-in-out;
+    transition: all 1s ease-in-out;
 }
 
 .dollars4 {
@@ -119,10 +119,11 @@ button:focus {
 }
 
 .dollar {
+    display: inline;
     font-family: 'Raleway', sans-serif;
     font-size: 3rem;
     padding: 2rem;
-    color: transparent;
+    color: inherit;
     cursor: pointer;
 }
 
