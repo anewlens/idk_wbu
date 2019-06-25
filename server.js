@@ -26,7 +26,8 @@ app.post('/', (req, res) => {
     longitude: req.body.long,
     latitude: req.body.lat,
     radius: 8046,
-    limit: 50
+    limit: 50,
+    price: req.body.priceRange
   })
   .then(results => {
     //DECLARATIONS FOR RANDOM CHOOSER
@@ -35,7 +36,6 @@ app.post('/', (req, res) => {
 
     //LOGGING RESULTS 
     console.log('Full Results: ', results.jsonBody.businesses.map(item => item.name))
-    console.log(results.jsonBody.businesses[random].name);
 
     //SEND RANDOM BUSINESS
     res.send({

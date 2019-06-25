@@ -5,6 +5,7 @@
     --blue: #60cecc;
     --white: hsl(30, 50%, 97%);
     --navy: #293462;
+    --orange: rgb(243, 169, 83);
 }
 
 html {
@@ -60,18 +61,65 @@ button:active {
     transform: translateY(4px);
 }
 
+
 .option {
     font-size: 3rem;
     flex-grow: 1;
     background-color: var(--white);
     color: var(--navy);
     border: 1px solid var(--navy);
+    
+}
 
+button:focus {
+    outline: none;
 }
 
 .active {
     color: var(--white);
     background-color: var(--navy);
+}
+
+.priceFilter {
+    display: flex;
+    justify-content: space-between;
+    color: transparent;
+    transition: 1s ease-in-out;
+}
+
+.dollars4 {
+    background: linear-gradient(to right, var(--navy), var(--navy) 100%, darkgrey 100%, darkgrey);
+    background-clip: text;
+    transition: 1s ease-in-out;
+}
+
+.dollars3 {
+    background: linear-gradient(to right, var(--navy), var(--navy) 75%, darkgrey 75%, darkgrey);
+    background-clip: text;
+    transition: 1s ease-in-out;
+
+}
+
+.dollars2 {
+    background: linear-gradient(to right, var(--navy), var(--navy) 50%, darkgrey 50%, darkgrey);
+    background-clip: text;
+    transition: 1s ease-in-out;
+
+}
+
+.dollars1 {
+    background: linear-gradient(to right, var(--navy), var(--navy) 25%, darkgrey 25%, darkgrey);
+    background-clip: text;
+    transition: 1s ease-in-out;
+
+}
+
+.dollar {
+    font-family: 'Raleway', sans-serif;
+    font-size: 3rem;
+    padding: 2rem;
+    color: transparent;
+    cursor: pointer;
 }
 
 #activate {
