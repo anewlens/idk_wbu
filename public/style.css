@@ -85,20 +85,21 @@ button:focus {
     justify-content: space-between;
     color: transparent;
     transition: all 1s ease-in-out;
+    margin: 2rem;
 }
 
 .dollars4 {
     background: linear-gradient(to right, var(--navy), var(--navy) 100%, darkgrey 100%, darkgrey);
     -webkit-background-clip:text;
     background-clip: text;
-    transition: 1s ease-in-out;
+    transition: all 1s ease-in-out;
 }
 
 .dollars3 {
     background: linear-gradient(to right, var(--navy), var(--navy) 75%, darkgrey 75%, darkgrey);
     -webkit-background-clip:text;
     background-clip: text;
-    transition: 1s ease-in-out;
+    transition: all 1s ease-in-out;
 
 }
 
@@ -106,7 +107,7 @@ button:focus {
     background: linear-gradient(to right, var(--navy), var(--navy) 50%, darkgrey 50%, darkgrey);
     -webkit-background-clip:text;
     background-clip: text;
-    transition: 1s ease-in-out;
+    transition: all 1s ease-in-out;
 
 }
 
@@ -114,7 +115,7 @@ button:focus {
     background: linear-gradient(to right, var(--navy), var(--navy) 25%, darkgrey 25%, darkgrey);
     -webkit-background-clip:text;
     background-clip: text;
-    transition: 1s ease-in-out;
+    transition: all 1s ease-in-out;
 
 }
 
