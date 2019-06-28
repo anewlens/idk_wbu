@@ -27,6 +27,7 @@ app.post('/', (req, res) => {
     latitude: req.body.lat,
     radius: 8046,
     limit: 50,
+    radius: 16000,
     price: req.body.priceRange
   })
   .then(results => {
