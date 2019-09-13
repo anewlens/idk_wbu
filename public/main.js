@@ -8,6 +8,7 @@ const answerName = document.querySelector('.result');
 const answerSite = document.querySelector('.resultSite')
 const answerLocation = document.querySelector('.resultLocation')
 const maxPrice = () => document.querySelectorAll('.priceSelected').length
+const errorMessage = document.querySelector('.errorMessage')
 
 //FILTERS SETUP
 let chosenFilters = []
@@ -26,11 +27,18 @@ let resultLong
 let resultSite
 
 //GET USER LOCATION
-navigator.geolocation
-.getCurrentPosition(position => {
-    longitude = position.coords.longitude
-    latitude = position.coords.latitude
-})
+if (navigator.geolocation) {
+    navigator.geolocation
+        .getCurrentPosition(position => {
+            longitude = position.coords.longitude
+            latitude = position.coords.latitude
+        },
+        err => {
+            errorMessage.classList.add('reveal')
+        })
+}
+
+//THROW ERROR IF NO LOCATION EXIS
 
 //DEFINE CHOSEN FILTERS
 filters.forEach(btn => {
@@ -52,12 +60,11 @@ priceFilters.forEach((btn, btnI) => {
             }
         })
         priceContainer.classList.replace(priceContainer.classList.item(1), `dollars${btnI + 1}`)
-
     })
 })
 
 activateBtn.addEventListener('click', () => {
-    let data = {
+    const data = {
         lat: latitude,
         long: longitude,
         filters: [...chosenFilters],
