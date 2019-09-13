@@ -161,6 +161,10 @@ button:focus {
     animation: moveUp .7s cubic-bezier(.25,.8,.25,1);
 }
 
+.disappear {
+    animation: moveDown .7s cubic-bezier(.25,.8,.25,1) forwards;
+}
+
 .reveal .links {
     display: flex;
     justify-content: space-around;
@@ -197,6 +201,18 @@ a:active {
     100% {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes moveDown {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(100%)
     }
 }
 

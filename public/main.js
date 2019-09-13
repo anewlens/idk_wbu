@@ -85,17 +85,22 @@ activateBtn.addEventListener('click', () => {
             resultSite = !result.random ? 'https://yelp.com' : result.random.url
         })
         //DOM ASSIGNMENTS 
-        .then(() => {
-            !resultName
-            ? answerName.innerHTML = 'Nothing matches that search! :('
-            : answerName.innerHTML = resultName
+        .then(async () => {
+            if (!resultName) {
+                answerName.innerHTML = 'Nothing matches that search! :('
+            } else if (!answerBlock.classList.contains('reveal')) {
+                answerName.innerHTML = resultName
+                answerBlock.classList.add('reveal')
+            } else {
+                await answerBlock.classList.add('disappear')
+                setTimeout(() => {
+                    answerName.innerHTML = resultName
+                    answerBlock.classList.remove('disappear')
+                }, 700);
+            }
             answerSite.setAttribute('href', resultSite)
             answerLocation.setAttribute('href', `https://www.google.com/maps/search/${resultName.replace(' ','+')}/@${latitude},${longitude},14z`)
         })
-    })
-    //RESULTS REVEAL
-    .then(() => {
-        answerBlock.classList.add('reveal')
     })
     .catch(err => console.log(err))
 })
