@@ -2,15 +2,8 @@ import apiCall from './modules/apiCall.js'
 
 const filters = document.querySelectorAll('.option')
 const priceFilters = document.querySelectorAll('.dollar')
-const maxPrice = document.querySelectorAll('.priceSelected').length
-
-
-//FILTERS SETUP
-let chosenFilters = []
-const priceRange = () => 
-    Array.apply(null, {length: maxPrice})
-        .map((e, i) => i+1)
-        .join(', ')
+const errorMessage = document.querySelector('#errorMessage')
+const activateBtn = document.querySelector('#activateBtn')
 
 // LOCATION
 let longitude
@@ -32,12 +25,13 @@ if (navigator.geolocation) {
 filters.forEach(btn => {
     btn.addEventListener('click', () => {
         btn.classList.toggle('active')
-        chosenFilters = [...document.querySelectorAll('.active').values()].map(filter => filter.value)
     })
 })
 
 priceFilters.forEach((btn, btnI) => {
     btn.addEventListener('click', () => {
+        const priceContainer = document.querySelector('#priceContainer')
+
         priceFilters.forEach((e, i) => {
             if (i < btnI && !e.classList.contains('priceSelected')) {
                 e.classList.toggle('priceSelected')
@@ -53,9 +47,20 @@ priceFilters.forEach((btn, btnI) => {
 
 activateBtn.addEventListener('click', async () => {
     try {
+        const chosenFilters = [...document.querySelectorAll('.active').values()].map(filter => filter.value)
+        const maxPrice = document.querySelectorAll('.priceSelected').length
+        const priceRange = () => 
+            Array.apply(null, {length: maxPrice})
+            .map((e, i) => i+1)
+            .join(', ')
+        
         await apiCall(latitude, longitude, chosenFilters, priceRange)
             //DOM ASSIGNMENTS 
             .then(async ({resultName, resultUrl}) => {
+                const resultTitle = document.querySelector('#resultTitle')
+                const resultBlock = document.querySelector('#resultBlock')
+                const yelpLink = document.querySelector('#yelpLink')
+                const resultLocation = document.querySelector('#resultLocation')
 
                 if (!resultName) {
                     resultTitle.innerHTML = 'Nothing matches that search! :('
@@ -73,8 +78,7 @@ activateBtn.addEventListener('click', async () => {
                 yelpLink.setAttribute('href', resultUrl)
                 resultLocation.setAttribute('href', `https://www.google.com/maps/search/${resultName.replace(' ','+')}/@${latitude},${longitude},14z`)
             })
-    }
-    catch(err) {
+    } catch(err) {
         console.log('error', err)
     }
 })

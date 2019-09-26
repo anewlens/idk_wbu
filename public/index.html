@@ -28,6 +28,7 @@
     <header>
         <h1 class="title">IDK WBU?</h1>
     </header>
+    
     <main >
         <ul class="filters">
             <button class="option" value='tradamerican'>American</button>
@@ -43,22 +44,28 @@
             <button class="option" value='sushi'>Sushi</button>
             <button class="option" value='seafood'>Seafood</button>
         </ul>
+
         <div id="priceContainer" class="dollars4">
             <h2 class="dollar dollar-1 priceSelected">$</h2>
             <h2 class="dollar dollar-2 priceSelected">$</h2>
             <h2 class="dollar dollar-3 priceSelected">$</h2>
             <h2 class="dollar dollar-4 priceSelected">$</h2>
         </div>
-        <a href="#resultBlock"><button id='activateBtn'>EAT!</button></a>
+
+        <a href="#resultBlock">
+            <button id='activateBtn'>EAT!</button>
+        </a>
+        
         <div id="resultBlock">
             <h2 id="resultTitle"></h2>
             <div class="links">
                 <a target='_blank' id="yelpLink">More info</a>
                 <a target='_blank' id="resultLocation">Show on map</a>
             </div>
-
         </div>
+
         <p id="errorMessage">Hey! I need location access to work!</p>
+    
     </main>
 
     <script type="module" src="./main.js"></script>

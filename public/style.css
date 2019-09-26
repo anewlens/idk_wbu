@@ -140,7 +140,6 @@ button:focus {
 }
 
 #resultBlock {
-    display: hidden;
     height: 10rem;
     margin-top: 2rem;
 }
