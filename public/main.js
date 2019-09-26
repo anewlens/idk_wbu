@@ -1,32 +1,21 @@
-//GRABBING DOM ELEMENTS
+import apiCall from './modules/apiCall.js'
+
 const filters = document.querySelectorAll('.option')
 const priceFilters = document.querySelectorAll('.dollar')
-const priceContainer = document.querySelector('.priceFilter')
-const activateBtn = document.getElementById('activate')
-const answerBlock = document.querySelector('.resultBlock')
-const answerName = document.querySelector('.result');
-const answerSite = document.querySelector('.resultSite')
-const answerLocation = document.querySelector('.resultLocation')
-const maxPrice = () => document.querySelectorAll('.priceSelected').length
-const errorMessage = document.querySelector('.errorMessage')
+const maxPrice = document.querySelectorAll('.priceSelected').length
+
 
 //FILTERS SETUP
 let chosenFilters = []
-const priceRange = () => Array.apply(null, {length: maxPrice()})
-                        .map((e, i) => i+1)
-                        .join(', ')
+const priceRange = () => 
+    Array.apply(null, {length: maxPrice})
+        .map((e, i) => i+1)
+        .join(', ')
 
-//LOCATION SETUPS
+// LOCATION
 let longitude
 let latitude
 
-//RESULTS SETUPS
-let resultName
-let resultLat
-let resultLong
-let resultSite
-
-//GET USER LOCATION
 if (navigator.geolocation) {
     navigator.geolocation
         .getCurrentPosition(position => {
@@ -35,12 +24,11 @@ if (navigator.geolocation) {
         },
         err => {
             errorMessage.classList.add('reveal')
+            console.log(err)
         })
 }
 
-//THROW ERROR IF NO LOCATION EXIS
-
-//DEFINE CHOSEN FILTERS
+// EVENT LISTENERS
 filters.forEach(btn => {
     btn.addEventListener('click', () => {
         btn.classList.toggle('active')
@@ -49,8 +37,8 @@ filters.forEach(btn => {
 })
 
 priceFilters.forEach((btn, btnI) => {
-    btn.addEventListener('click', async () => {
-        await priceFilters.forEach((e, i) => {
+    btn.addEventListener('click', () => {
+        priceFilters.forEach((e, i) => {
             if (i < btnI && !e.classList.contains('priceSelected')) {
                 e.classList.toggle('priceSelected')
             } else if (i === btnI && !e.classList.contains('priceSelected')) {
@@ -59,55 +47,34 @@ priceFilters.forEach((btn, btnI) => {
                 e.classList.toggle('priceSelected')
             }
         })
-        priceContainer.classList.replace(priceContainer.classList.item(1), `dollars${btnI + 1}`)
+        priceContainer.classList.replace(priceContainer.classList.item(0), `dollars${btnI + 1}`)
     })
 })
 
-activateBtn.addEventListener('click', () => {
-    const data = {
-        lat: latitude,
-        long: longitude,
-        filters: [...chosenFilters],
-        priceRange: priceRange()
-    }
+activateBtn.addEventListener('click', async () => {
+    try {
+        await apiCall(latitude, longitude, chosenFilters, priceRange)
+            //DOM ASSIGNMENTS 
+            .then(async ({resultName, resultUrl}) => {
 
-    //SERVER CALL
-    fetch('/', {
-        method: 'post',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data),
-        credentials: 'same-origin', // send cookies
-        credentials: 'include',     // send cookies, even in CORS
-    })
-    //READ RESULTS
-    .then(res => {
-        console.log('pre-res:', res)
-        res.json()
-        //SET VARIABLES
-        .then(result => {
-            console.log('result', result)
-            resultName = !result.random ? 'Nothing matches that search! :(' : result.random.name
-            resultSite = !result.random ? 'https://yelp.com' : result.random.url
-        })
-        //DOM ASSIGNMENTS 
-        .then(async () => {
-            if (!resultName) {
-                answerName.innerHTML = 'Nothing matches that search! :('
-            } else if (!answerBlock.classList.contains('reveal')) {
-                answerName.innerHTML = resultName
-                answerBlock.classList.add('reveal')
-            } else {
-                await answerBlock.classList.add('disappear')
-                setTimeout(() => {
-                    answerName.innerHTML = resultName
-                    answerBlock.classList.remove('disappear')
-                }, 700);
-            }
-            answerSite.setAttribute('href', resultSite)
-            answerLocation.setAttribute('href', `https://www.google.com/maps/search/${resultName.replace(' ','+')}/@${latitude},${longitude},14z`)
-        })
-    })
-    .catch(err => console.log(err))
+                if (!resultName) {
+                    resultTitle.innerHTML = 'Nothing matches that search! :('
+                } else if (!resultBlock.classList.contains('reveal')) {
+                    resultTitle.innerHTML = resultName
+                    resultBlock.classList.toggle('reveal')
+                } else {
+                    await resultBlock.classList.toggle('disappear')
+                    setTimeout(() => {
+                        resultTitle.innerHTML = resultName
+                        resultBlock.classList.toggle('disappear')
+                    }, 700);
+                }
+
+                yelpLink.setAttribute('href', resultUrl)
+                resultLocation.setAttribute('href', `https://www.google.com/maps/search/${resultName.replace(' ','+')}/@${latitude},${longitude},14z`)
+            })
+    }
+    catch(err) {
+        console.log('error', err)
+    }
 })

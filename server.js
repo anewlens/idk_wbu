@@ -23,8 +23,8 @@ app.post('/', (req, res) => {
   //YELP API CALL
   client.search({
     categories: req.body.filters.length === 0 ? "restaurants" : req.body.filters.join(),
-    longitude: req.body.long,
-    latitude: req.body.lat,
+    longitude: req.body.longitude,
+    latitude: req.body.latitude,
     radius: 8046,
     limit: 50,
     radius: 16000,

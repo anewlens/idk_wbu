@@ -80,7 +80,7 @@ button:focus {
     background-color: var(--navy);
 }
 
-.priceFilter {
+#priceContainer {
     display: inline;
     justify-content: space-between;
     color: transparent;
@@ -128,7 +128,7 @@ button:focus {
     cursor: pointer;
 }
 
-#activate {
+#activateBtn {
     font-family: 'Righteous', cursive;
     font-size: 3.5rem;
     margin-top: 1.5rem;
@@ -139,13 +139,13 @@ button:focus {
     box-shadow: 0 1px 3px 0 rgba(243, 169, 83, 0.6), 0 1px 2px 0 rgba(243, 169, 83, 0.36);
 }
 
-.resultBlock {
+#resultBlock {
     display: hidden;
     height: 10rem;
     margin-top: 2rem;
 }
 
-.result {
+#resultTitle {
     text-align: center;
     font-family: 'Righteous', cursive;
     font-weight: 700;
@@ -192,7 +192,7 @@ a:active {
     color: inherit;
 }
 
-.errorMessage { 
+#errorMessage { 
     opacity: 0;
     background-color: var(--navy);
     padding: 1rem 1.5rem;
