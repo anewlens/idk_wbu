@@ -6,17 +6,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "push": "git push && git push heroku master",
+    "push": "git push",
     "server": "nodemon server.js"
   },
   "author": "Robbie Carroll",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.17.0",
     "request": "^2.88.0",
     "yelp-fusion": "^3.0.0"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1"
+    "nodemon": "^2.0.20"
   }
 }
