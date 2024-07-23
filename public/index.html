@@ -1,73 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    <link rel="icon" href="images/favicon-32.png" sizes="32x32">
-    <link rel="icon" href="images/favicon-76.png" sizes="76x76">
-    <link rel="icon" href="images/favicon-96.png" sizes="96x96">
-    <link rel="icon" href="images/favicon-128.png" sizes="128x128">
-    <link rel="icon" href="images/favicon-192.png" sizes="192x192">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link rel="icon" href="images/favicon-32.png" sizes="32x32" />
+    <link rel="icon" href="images/favicon-76.png" sizes="76x76" />
+    <link rel="icon" href="images/favicon-96.png" sizes="96x96" />
+    <link rel="icon" href="images/favicon-128.png" sizes="128x128" />
+    <link rel="icon" href="images/favicon-192.png" sizes="192x192" />
 
     <!-- Android -->
     <link rel="shortcut icon" sizes="196x196" href=“images/favicon-196.png">
 
     <!-- iOS -->
-    <link rel="apple-touch-icon" href="images/favicon-120.png" sizes="120x120">
-    <link rel="apple-touch-icon" href="images/favicon-152.png" sizes="152x152">
-    <link rel="apple-touch-icon" href="images/favicon-180.png" sizes="180x180">
+    <link
+      rel="apple-touch-icon"
+      href="images/favicon-120.png"
+      sizes="120x120"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="images/favicon-152.png"
+      sizes="152x152"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="images/favicon-180.png"
+      sizes="180x180"
+    />
 
-    <link href="https://fonts.googleapis.com/css?family=Questrial|Righteous&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="style.css" >
+    <link
+      href="https://fonts.googleapis.com/css?family=Questrial|Righteous&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <title>IDK WBU?</title>
-</head>
+  </head>
 
-<body class="container">
+  <body class="container">
     <header>
-        <h1 class="title">IDK WBU?</h1>
+      <h1 class="title">IDK WBU?</h1>
     </header>
-    
-    <main >
-        <ul class="filters">
-            <button class="option" value='tradamerican'>American</button>
-            <button class="option" value='beer_and_wine'>Bars</button>
-            <button class="option" value='breakfast_brunch'>Breakfast</button>
-            <button class="option" value='chinese'>Chinese</button>
-            <button class="option" value='hotdogs'>Fast Food</button>
-            <button class="option" value='greek'>Greek</button>
-            <button class="option" value='italian'>Italian</button>
-            <button class="option" value='icecream'>Ice Cream</button>
-            <button class="option" value='mexican'>Mexican</button>
-            <button class="option" value='pizza'>Pizza</button>
-            <button class="option" value='sushi'>Sushi</button>
-            <button class="option" value='seafood'>Seafood</button>
-        </ul>
 
-        <div id="priceContainer" class="dollars4">
-            <h2 class="dollar dollar-1 priceSelected">$</h2>
-            <h2 class="dollar dollar-2 priceSelected">$</h2>
-            <h2 class="dollar dollar-3 priceSelected">$</h2>
-            <h2 class="dollar dollar-4 priceSelected">$</h2>
+    <main>
+      <ul class="filters">
+        <button class="option" value="tradamerican">American</button>
+        <button class="option" value="beer_and_wine">Bars</button>
+        <button class="option" value="chinese">Chinese</button>
+        <button class="option" value="hotdogs">Fast Food</button>
+        <button class="option" value="greek">Greek</button>
+        <button class="option" value="italian">Italian</button>
+        <button class="option" value="icecream">Ice Cream</button>
+        <button class="option" value="mexican">Mexican</button>
+        <button class="option" value="pizza">Pizza</button>
+        <button class="option" value="sushi">Sushi</button>
+        <button class="option" value="seafood">Seafood</button>
+      </ul>
+
+      <div id="priceContainer" class="dollars4">
+        <h2 class="dollar dollar-1 priceSelected">$</h2>
+        <h2 class="dollar dollar-2 priceSelected">$</h2>
+        <h2 class="dollar dollar-3 priceSelected">$</h2>
+        <h2 class="dollar dollar-4 priceSelected">$</h2>
+      </div>
+
+      <a href="#resultBlock">
+        <button id="activateBtn">EAT!</button>
+      </a>
+
+      <div id="resultBlock">
+        <h2 id="resultTitle"></h2>
+        <div class="links">
+          <a target="_blank" id="yelpLink">More info</a>
+          <a target="_blank" id="resultLocation">Show on map</a>
         </div>
+      </div>
 
-        <a href="#resultBlock">
-            <button id='activateBtn'>EAT!</button>
-        </a>
-        
-        <div id="resultBlock">
-            <h2 id="resultTitle"></h2>
-            <div class="links">
-                <a target='_blank' id="yelpLink">More info</a>
-                <a target='_blank' id="resultLocation">Show on map</a>
-            </div>
-        </div>
-
-        <p id="errorMessage">Hey! I need location access to work!</p>
-    
+      <p id="errorMessage">Hey! I need location access to work!</p>
     </main>
 
     <script type="module" src="./main.js"></script>
-</body>
+  </body>
 </html>
